@@ -1,0 +1,120 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width initial-scale=1.0">
+    <title>KC Retailers</title>
+    <link rel="stylesheet" href="style.css">
+</head>
+<body>
+    <Header>
+        <h1>Welcome to KC Retailers, your trusted retailer for anything football related!</h1>
+            <nav>
+                <ul>
+                    <li><a href="index.html"> Home </a></li>
+                    <li><a href="shop.html"> Shop </a></li>
+                    <li><a href="cart.html"> Cart </a></li>
+                    <li><a href="checkout.html"> Checkout </a></li>
+                    <li><a href="feedback.html"> Contact Us</a></li>
+                </ul>
+            </nav>
+    </Header>
+    <section class="featured">
+        <div class="container">
+            <div class="section-title">
+                <h2>Available Kits</h2>
+            </div>
+             <div class="products">
+                <div class="product-card">
+                    <div class="product-img">
+                        <img src="images/man united home kit.jpg" alt="Manchester United Home Kit">
+                    </div>
+                    <div class="product-info">
+                        <h3>Manchester Home Kit 2024/25</h3>
+                        <p class="team">Manchester United</p>
+                        <p class="price">P500</p>
+                        <a href="javascript:void(0)" class="btn"
+                           onclick="addToCart('Manchester Home Kit 2024/25', 'Manchester United', 500)"> Add to Cart</a>
+                    </div>
+                </div>
+                <div class="product-card">
+                    <div class="product-img">
+                        <img src="images/Barca home kit.jpg" alt="Barcelona Home Kit">
+                    </div>
+                    <div class="product-info">
+                        <h3>Barcelona Home Kit 2024/25</h3>
+                        <p class="team">FC Barcelona</p>
+                        <p class="price">P700</p>
+                        <a href="javascript:void(0)" class="btn"
+                           onclick="addToCart('Barcelona Home Kit 2024/25', 'Barcelona Home Kit', 700)">Add to Cart</a>
+                    </div>
+                </div> 
+                <div class="product-card">
+                    <div class="product-img">
+                        <img src="images/psg kit.jpg" alt="PSG x Jordan Kit">
+                    </div>
+                    <div class="product-info">
+                        <h3>PSG x Jordan Wings Kit </h3>
+                        <p class="team">Paris Saint Germain</p>
+                        <p class="price">P700</p>
+                        <a href="javascript:void(0)" class="btn"
+                           onclick="addToCart('PSG x Jordan Wings Kit', 'PSG x Jordan Kit', 700)">Add to Cart</a>
+                    </div>
+                </div>
+                <div class="product-card">
+                    <div class="product-img">
+                        <img src="images/madrid kit.jpg" alt="Real Madrid FC">
+                    </div>
+                    <div class="product-info">
+                        <h3>Real Madrid Special Kit</h3>
+                        <p class="team">Real Madrid</p>
+                        <p class="price">P900</p>
+                        <a href="javascript:void(0)" class="btn"
+                           onclick="addToCart('Real Madrid Special Kit', 'Real Madrid FC', 900)"> Add to Cart</a>
+                    </div>
+                </div>
+                <div class="product-card">
+                    <div class="product-img">
+                        <img src="images/bayern munich.jpg" alt="Bayern Munich Kit">
+                    </div>
+                    <div class="product-info">
+                        <h3>Bayern Munich Away Kit 23/24</h3>
+                        <p class="team">Bayern Munich</p>
+                        <p class="price">P900</p>
+                        <a href="javascript:void(0)" class="btn"
+                           onclick="addToCart('Bayern Munich Kit', 'Bayern Munich', 900)">Add to Cart</a>
+                    </div>
+                </div>
+            </div>
+        </div>
+        <a href="cart.html"> <button> Proceed to Cart </button></a>
+    </section>
+    <script>
+           function addToCart(name, team, price) {
+        let cart = JSON.parse(localStorage.getItem('cart')) || [];
+        const existingItem = cart.find(item => item.name === name);
+        
+        if(existingItem) {
+            existingItem.quantity++;
+        } else {
+            cart.push({
+                name: name,
+                team: team,
+                price: price,
+                quantity: 1
+            });
+        }
+        
+        localStorage.setItem('cart', JSON.stringify(cart));
+        const notification = document.getElementById('cart-notification');
+notification.textContent = 'Item added to cart!';
+notification.style.display = 'block';
+setTimeout(() => {
+    notification.style.display = 'none';
+}, 2000);
+    }
+</script> 
+    </script>
+    <div class="custom-notification" id="cart-notification"></div>
+</body>
+</html>
